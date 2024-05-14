@@ -76,6 +76,11 @@ ROOT_URLCONF = 'config.urls'
 # CSRF_TRUSTED_ORIGINS = ["localhost:8000"]
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000", "http://127.0.0.1:5500"]
 
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://localhost:5500",
+)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
