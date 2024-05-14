@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+# DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['*']
-# HOSTS = os.environ.get('ALLOWED_HOSTS')
-# ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
+# ALLOWED_HOSTS = ['*']
+HOSTS = os.environ.get('ALLOWED_HOSTS')
+ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
 # Application definition
 
 INSTALLED_APPS = [
@@ -109,9 +109,9 @@ DATABASES = {
     }
 }
 
-url = 'postgres://postgresbd_v2u3_user:gbCY07pKHEcRFh0XASzR6Go4YWU8cEKQ@dpg-covmclg21fec73fn95e0-a.oregon-postgres.render.com/postgresbd_v2u3'
-database_url = os.environ.get('DATABASE_URL', url)
-DATABASES['default'] = dj_database_url.parse(database_url)
+# url = 'postgres://postgresbd_v2u3_user:gbCY07pKHEcRFh0XASzR6Go4YWU8cEKQ@dpg-covmclg21fec73fn95e0-a.oregon-postgres.render.com/postgresbd_v2u3'
+# database_url = os.environ.get('DATABASE_URL', url)
+# DATABASES['default'] = dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
