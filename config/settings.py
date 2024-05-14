@@ -74,6 +74,7 @@ ROOT_URLCONF = 'config.urls'
 #     "http://localhost:8000",
 # )
 # CSRF_TRUSTED_ORIGINS = ["localhost:8000"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000", "http://127.0.0.1:5500"]
 
 TEMPLATES = [
     {
