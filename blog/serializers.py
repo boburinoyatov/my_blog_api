@@ -6,6 +6,8 @@ from blog.models import Post
 
 # new
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+
+
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'is_staff', 'is_active', 'is_superuser']
