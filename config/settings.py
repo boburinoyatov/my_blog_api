@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = True
+# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-# ALLOWED_HOSTS = ['*']
-HOSTS = os.environ.get('ALLOWED_HOSTS')
-ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
+ALLOWED_HOSTS = ['*']
+# HOSTS = os.environ.get('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'blog',  # new
     'rest_framework',  # new
     'drf_yasg',
-    "corsheaders"
+    "corsheaders",
+    'rest_framework.authtoken'
 
 ]
 
@@ -53,6 +54,10 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         'rest_framework.permissions.IsAuthenticated',
         # 'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
@@ -69,18 +74,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-# CORS_ALLOWED_ORIGINS = (
-#     "http://localhost:3000",
-#     "http://localhost:8000",
-# )
-# CSRF_TRUSTED_ORIGINS = ["localhost:8000"]
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000", "http://127.0.0.1:5500"]
-
 CORS_ALLOWED_ORIGINS = (
     "http://localhost:3000",
     "http://localhost:8000",
     "http://localhost:5500",
 )
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000", "http://127.0.0.1:5500"]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -105,11 +106,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': "back472_blog",
+        "USER": "back472_blog_user",
+        "PASSWORD": "G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe",
+        "HOST": "postgres://back472_blog_user:G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe@dpg-cno0qkn109ks73ch112g-a.oregon-postgres.render.com/back472_blog",
+        "PORT": 5432
     }
 }
 
-# url = 'postgres://postgresbd_v2u3_user:gbCY07pKHEcRFh0XASzR6Go4YWU8cEKQ@dpg-covmclg21fec73fn95e0-a.oregon-postgres.render.com/postgresbd_v2u3'
+# url = 'postgres://back472_blog_user:G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe@dpg-cno0qkn109ks73ch112g-a.oregon-postgres.render.com/back472_blog'
 # database_url = os.environ.get('DATABASE_URL', url)
 # DATABASES['default'] = dj_database_url.parse(database_url)
 
@@ -145,7 +150,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR / 'static')
 STATICFILES_DIRS = [BASE_DIR]
 
