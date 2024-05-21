@@ -11,7 +11,7 @@ from aiogram.types import Message
 from blog_bot.api import get_posts
 
 # Bot token can be obtained via https://t.me/BotFather
-TOKEN = "6669615336:AAHoZW2A0w93z4Kyxd8WwmwE32jPfXNfiBc"
+TOKEN = "6688432374:AAExk8lII1KJwhqVjnBt7CrpdGsSiIGqf6Q"
 
 dp = Dispatcher()
 
